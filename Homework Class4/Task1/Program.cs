@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace Task1
 {
@@ -6,62 +6,41 @@ namespace Task1
     {
         static void Main(string[] args)
         {
-       
-            Console.Clear();
-            //Declaring the String as you Described
+
+            Console.WriteLine("Hello from SEDC Codecademy v7.0");
             string subString = "Hello from SEDC Codecademy v7.0";
-            Console.WriteLine(subString);
-            //Requesting an input from the user
-            Console.WriteLine("Please enter a number?");
-            string input = Console.ReadLine();
-            //Converting it to an Integrer
-            int n = int.Parse(input);
-            //Making it to Char so we can split it
-            char[] chars = subString.ToCharArray();
-            //Getting the length of the chars so that we can use it in our if statement
-            int charsnumber = chars.Length;
-            //Counter for our while loop
-            int counter1 = 0;
-
-
-            string output1="";
-
+            //Getting the Input from the user
+            Console.WriteLine("Please enter a number:");
+            string stringN = Console.ReadLine();
             
-            //Condition to check if the input is less than the length of the char array
-            if (charsnumber>=n) {
-                //Making a While loop 
-                while (counter1 <= n) {
+           
+            int n1;
+            //Checking if we can sucessfully Parse the string and assigning that value to n1
+            bool sucessfulParsing = int.TryParse(stringN, out n1);
+            //If the checking is sucessfull and less than the length of our original substring
+            if (sucessfulParsing == true && n1<subString.Length ) {
 
-                    
-                    //Making the Charact back to string and adding them to the output
-                     output1 += chars[counter1].ToString();
-                    counter1++;
+                string subString1;
+           
+            
+                //Creating our substrinf from 0 to the value of our input (n1)
+                subString1 = subString.Substring(0, n1);
+                //Getting the length of the Substring
+                int lengthOfSubString1 = subString1.Length;
 
-
-
-                  
-
-                  
-
-
-
-                }
-                //Output
-                Console.WriteLine(output1);
-
-                //Geting the length
-                int outputlenght = output1.Length;
-                Console.WriteLine($"The length of the new string is:{outputlenght}");
+                //Getting the output if everything went succesfully
+                Console.WriteLine(subString1);
+                Console.WriteLine($"The length of the new string is {lengthOfSubString1}");
                 Console.ReadLine();
-
+            
+           
 
             }
-            else
-            {// If there is a bigger number or invalid character :D
-                Console.WriteLine("The number you entered is more than the length of the String or is an invalid character. Goodbye");
+            else {//Handlind errors if we get a wrong input :D
+                Console.WriteLine("You either Entered a wrong character or a big number");
+                Console.WriteLine("Goodbye");
                 Environment.Exit(0);
             }
-           
-        }
     }
+}
 }
